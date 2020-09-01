@@ -90,6 +90,12 @@ export chrys_password=mypassword
 export chrys_cert=pathtomycertificate.cer
 ```
 
+Run the object detection example:
+```
+python object_detection.py
+```
+
+If you don't have a chrysalis connection string create your developer account [here](https://cloud.chryscloud.com) and click on `Your first RTMP stream`.
 
 
 
