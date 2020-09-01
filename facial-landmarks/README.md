@@ -8,9 +8,9 @@ This example shows how you can build your own Facial Landmark detection in the c
 - [Install OBS Studio](https://obsproject.com/)
 
 
-Clone the repository:
+Clone the repository if you haven't done so already:
 ```
-git clone https://github.com/chryscloud/TBD
+https://github.com/chryscloud/chryscloud-ai-examples.git
 ```
 
 Download pre-trained shape predictor model in the 'data' folder:
@@ -31,7 +31,8 @@ conda env create -f environment.yml
 conda activate chrysface
 ```
 
-if you need more information on how to stream to Chrysalis cloud 
+If you need more information on [how to stream to Chrysalis cloud visit our page for instructions](https://chryscloud.com/documentation/how-to-stream-from-web-cam-to-chrysalis/)
+
 
 ## Run
 
@@ -45,7 +46,7 @@ export chrys_cert=pathtomycertificate.cer
 
 Run the example:
 ```python
-python face_feature_detect.py
+python face_landmarks.py
 ```
 
 If you don't have a chrysalis connection string create your developer account [here](https://cloud.chryscloud.com) and click on `Your first RTMP stream`.
