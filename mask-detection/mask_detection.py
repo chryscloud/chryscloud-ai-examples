@@ -98,11 +98,11 @@ if __name__ == "__main__":
     chrys = chrysalis.Connect(host=host, port=port, password=password, ssl_ca_cert=cert_path)
 
     print("[INFO] loading face detector model...")
-    prototxtPath ="data/deploy.prototxt"
-    weightsPath = "data/res10_300x300_ssd_iter_140000.caffemodel"
+    prototxtPath ="deploy.prototxt"
+    weightsPath = "res10_300x300_ssd_iter_140000.caffemodel"
     faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
     print("[INFO] loading face mask detector model...")
-    maskNet = load_model("data/mask_detector.model")
+    maskNet = load_model("mask_detector.model")
     
     # initialize the video stream and allow the camera sensor to warm up
     print("[INFO] starting video stream...")
