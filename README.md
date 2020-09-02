@@ -1,12 +1,12 @@
 # Chrysalis Cloud Machine Learning Examples
 
-This repository contains couple of examples how to use standard machine learning frameworks in conjunction with Chrysalis Cloud. 
+This repository contains examples how to modify some of the existing examples out there to work on IP network cameras and Chrysalis Cloud.
 
 ## Examples
 
-1. `facial-landmarks` in the cloud
-2. `object-detection` in the cloud
-3. `mask-detection` in the cloud
+1. [`facial-landmarks` in the cloud](#facial-landmarks)
+2. [`object-detection` in the cloud](#object-detection)
+3. [`mask-detection` in the cloud](#covid19-mask-detection)
 
 ### Facial Landmarks
 
@@ -48,3 +48,22 @@ Deep learning model:
 ![object detection](https://raw.githubusercontent.com/chryscloud/chryscloud-ai-examples/master/assets/object_detection.png)
 
 [View example code](https://github.com/chryscloud/chryscloud-ai-examples/tree/master/object-detection)
+
+
+### Covid19 Mask Detection
+
+Prerequsities:
+- Anaconda
+- OBS Studio
+
+Languages:
+- Python
+
+Libraries:
+- TensorFlow 2.1.0
+- OpenCV
+- Chrysalis Cloud SDK
+- imutils
+- 
+
+![facial landmarks](https://raw.githubusercontent.com/chryscloud/chryscloud-ai-examples/master/assets/mask_detection.jpg)
