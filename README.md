@@ -66,4 +66,4 @@ Libraries:
 - imutils
 - 
 
-![facial landmarks](https://raw.githubusercontent.com/chryscloud/chryscloud-ai-examples/master/assets/mask_detection.jpg)
+![mask detection](https://raw.githubusercontent.com/chryscloud/chryscloud-ai-examples/master/assets/mask_detection.jpg)
