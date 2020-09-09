@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Display Webcam Stream</title>
+    <script src="static/js/capture.js"></script>
+    <style>
+    </style>
+</head>
+ 
+<body>
+<div id="container">
+	<div class="camera">
+        <video id="video">Video stream not available.</video>
+        <button id="startbutton">Take photo</button> 
+        <button id="facedetect">Test recognition</button> 
+        <div id="facerecognized"></div>
+    </div>
+    <div class="output">
+        <canvas id="canvas">
+        </canvas>
+    </div>
+    <div>
+        Name: <input  id="username" type="text" />
+        <button id="uploadphoto">Upload photo</button> 
+        <div id="error"></div>
+    </div>
+</div>
+</body>
+</html>
