@@ -4,7 +4,7 @@ This example is an modification of an existing tutorial by [Adrian Rosebrock](ht
 
 Please visit tutorial [COVID-19: Face Mask Detector with OpenCV, Keras/TensorFlow, and Deep Learning](https://www.pyimagesearch.com/2020/05/04/covid-19-face-mask-detector-with-opencv-keras-tensorflow-and-deep-learning/) site if you'd like to know how to prepare a dataset and train your own network. 
 
-## Prerequsities
+## Prerequisites
 
 - [Install Anaconda](https://docs.anaconda.com/anaconda/install/)
 - [Install OBS Studio](https://obsproject.com/)
