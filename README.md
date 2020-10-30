@@ -10,7 +10,7 @@ This repository contains examples how to modify some of the existing examples ou
 
 ### Facial Landmarks
 
-Prerequsities:
+Prerequisites:
 - Anaconda
 - OBS Studio
 
@@ -29,7 +29,7 @@ Libraries:
 
 ### Object Detection
 
-Prerequsities:
+Prerequisites:
 - Anaconda
 - OBS Studio
 
@@ -52,7 +52,7 @@ Deep learning model:
 
 ### Covid19 Mask Detection
 
-Prerequsities:
+Prerequisites:
 - Anaconda
 - OBS Studio
 

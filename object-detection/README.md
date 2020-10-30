@@ -37,7 +37,7 @@ or
 cat /usr/include/cudnn.h | grep CUDNN_MAJOR -A 2
 ```
 
-## Prerequsities
+## Prerequisites
 
 - [Install Anaconda](https://docs.anaconda.com/anaconda/install/)
 - [Install OBS Studio](https://obsproject.com/)

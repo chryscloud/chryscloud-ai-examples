@@ -2,7 +2,7 @@
 
 This example shows how you can build your own Facial Landmark detection in the cloud.
 
-## Prerequsities
+## Prerequisites
 
 - [Install Anaconda](https://docs.anaconda.com/anaconda/install/)
 - [Install OBS Studio](https://obsproject.com/)
