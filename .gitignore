@@ -103,3 +103,7 @@ htmlcov
 *.orig
 *shape_predictor_68_face_landmarks.dat
 */data/
+
+
+*video_streaming_pb2_grpc.py
+*video_streaming_pb2.py

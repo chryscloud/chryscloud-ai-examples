@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  chrysedgeportal:
+    image: chryscloud/chrysedgeportal:0.0.6
+    depends_on:
+      - chrysedgeserver
+      - redis
+    ports:
+      - "8905:8905"
+    networks:
+      - chrysnet
+  chrysedgeserver:
+    image: chryscloud/chrysedgeserver:0.0.6
+    restart: always
+    depends_on:
+      - redis
+    entrypoint: /app/main
+    ports:
+      - "8909:8909"
+      - "50001:50001"
+    volumes:
+      - /data/chrysalisfacerecognition:/data/chrysalis
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks: 
+      - chrysnet
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
+    # volumes:
+    #   - /data/chrysalis/redis:/data
+    #   - ./redis.conf:/usr/local/etc/redis/redis.conf
+    # command:
+    #   - redis-server
+    #   - /usr/local/etc/redis/redis.conf
+  
+    networks: 
+      - chrysnet
+
+networks:
+  chrysnet:
+    name: chrysnet

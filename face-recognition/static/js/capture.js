@@ -124,7 +124,18 @@
       let formData = new FormData();
       formData.append('file', blob);
       fetch('/find', {method:"POST", body: formData}).then(res => res.json()).then(data => {
-        console.log(data);
+        if (data) {
+          if (data.hasOwnProperty('person')) {
+            var person = data['person'];
+            let person_name = person['name'];
+            if (person_name) {
+              facerecognized.innerHTML = person_name + ", distance: " + person['distance'];
+            }
+            console.log(data, person_name);
+          } else {
+            facerecognized.innerHTML = "Unknown or no person";
+          }
+        }
       });
     }
 

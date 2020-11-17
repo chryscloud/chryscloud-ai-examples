@@ -5,12 +5,11 @@ import os
 import cv2
 import numpy as np
 from flask import Flask, jsonify, request, redirect, abort,render_template
+from recognize_image import recognize_image
 import psycopg2
+from config import validate_param,postgres_conn, close_connections
+import atexit
 
-try:
-    conn = psycopg2.connect("dbname='db' user='igor' host='localhost' password='si0l3m0n1KA'")
-except:
-    print("I am unable to connect to the database")
 
 app = Flask(__name__)
 
@@ -62,29 +61,21 @@ def find_image():
     data = np.frombuffer(in_memory_file.getvalue(), dtype=np.uint8)
     image = cv2.imdecode(data, 1) # 1 = color image flag
 
-    detected_faces = face_detector(image, 1)
-    if len(detected_faces) <= 0:
-        raise InvalidUsage("no face found", status_code=404)
-    
-    detected_face = detected_faces[0]
-    crop = image[detected_face.top():detected_face.bottom(), detected_face.left():detected_face.right()]
+    results = recognize_image(image, face_detector)
 
-    encodings = face_recognition.face_encodings(crop)
-    if len(encodings) <= 0:
-        raise InvalidUsage("encoding couldn't be extracted", status_code=404)
-    
-    threshold = 0.6
-    query = "SELECT id,name, sqrt(power(CUBE(array[{}]) <-> vec_low, 2) + power(CUBE(array[{}]) <-> vec_high, 2)) as dist FROM faces ORDER BY dist ASC LIMIT 1".format(
-                ','.join(str(s) for s in encodings[0][0:64]),
-                ','.join(str(s) for s in encodings[0][64:128]),
-            )
-    print(query)
-    cur = conn.cursor()
-    cur.execute(query)
+    # find lowerst distance
 
-    result = cur.fetchall()
-    print(result)
-    resp = jsonify(success=True)
+    if len(results) == 0:
+        return jsonify(success=True)
+
+    best_result = min(results, key=lambda x:x['distance'])
+
+    print("best result distance: ", best_result['distance'])
+    if best_result['distance'] > 0.5:
+        resp = jsonify(success=True)
+        return resp
+
+    resp = jsonify(success=True, person=best_result)
     return resp
 
 
@@ -117,9 +108,6 @@ def upload_image():
     if len(detected_faces) != 1:
         raise InvalidUsage("no faces detected", status_code=410)
 
-    if not os.path.exists("./.faces"):
-        os.mkdir("./.faces")
-
     detected_face =  detected_faces[0]
     print("Face found at Left: {} Top: {} Right: {} Bottom: {}".format(detected_face.left(), detected_face.top(),
                                                                              detected_face.right(), detected_face.bottom()))
@@ -134,12 +122,21 @@ def upload_image():
             ','.join(str(s) for s in encodings[0][0:64]),
             ','.join(str(s) for s in encodings[0][64:128]),
         )
-        cur = conn.cursor()
+        cur = postgres_conn.get_cursor()
         cur.execute(query)
-        conn.commit()
+        postgres_conn.commit()
 
     resp = jsonify(success=True)
     return resp
 
 if __name__ == "__main__":
+    db_host = validate_param("db_host")
+    db_name = validate_param("db_name")
+    db_user = validate_param("db_user")
+    db_password = validate_param("db_password")
+
+    postgres_conn.init_app(db_name, db_host, db_user, db_password)
+
+    atexit.register(close_connections)
+
     app.run(host='0.0.0.0', port=5001, debug=True)
