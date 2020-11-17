@@ -1,5 +1,7 @@
 # Face Recognition from multiple cameras
 
+![](https://storage.googleapis.com/chrysaliswebassets/face_recognition_simple_gif.gif)
+
 ## Prerequsities:
 
 - [install anaconda](https://docs.anaconda.com/anaconda/install/)
