@@ -1,0 +1,22 @@
+name: chryfacerec
+channels:
+  - conda-forge
+dependencies:
+  - ca-certificates=2020.1.1
+  - certifi=2020.4.5.1
+  - openssl=1.1.1f
+  - pip=20.0.2=py37_1
+  - python=3.7.7
+  - tk=8.6.8
+  - dlib=19.21.0
+  - opencv=4.4.0
+  - pip:
+    - chrysalis==1.0.0
+    - psycopg2==2.8.5
+    - Flask==1.1.2
+    - requests==2.24.0
+    - face_recognition==1.3.0
+    - imutils==0.5.3
+    - grpcio
+    - grpcio-tools
+    - scikit-learn
